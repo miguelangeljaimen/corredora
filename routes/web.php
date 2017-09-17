@@ -12,5 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test.index');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('visita/{id}','VisitasController@getUsuarios');
+
+
+Route::group(['prefix'=>'api'], function(){
+	//Route::get('ciudades', 'CiudadesController@api');
+	
+});
+
+	
+Route::group(['prefix'=>'admin'], function(){
+	Route::resource('clientes','ClientesController');
+	Route::resource('provincias','ProvinciasController');
+	Route::resource('corredoras','CorredorasController');
+	
+});
+
+Route::get('provincias/{id}', 'CorredorasController@getProvincias');
+Route::get('comunas/{id}', 'CorredorasController@getComunas');

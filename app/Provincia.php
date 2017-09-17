@@ -17,5 +17,11 @@ class Provincia extends Model
         public function comunas(){
             return $this->hasMany('App\Comuna');
         }
+
+        public static function provincias($id){
+       	return Provincia::where('region_id', '=', $id)->get();
+
+    	
+    	}
     
 }

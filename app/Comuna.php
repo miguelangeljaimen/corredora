@@ -21,4 +21,8 @@ class Comuna extends Model
     public function corredoras(){
     	return $this->hasMany('App\Corredora');
     }
+
+    public static function comunas($id){
+        return Comuna::where('provincia_id','=',$id)->get();
+    }
 }
